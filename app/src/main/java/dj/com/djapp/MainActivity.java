@@ -1,29 +1,46 @@
 package dj.com.djapp;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Vibrator;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import dj.com.djapp.listView.ListViewDemo;
+import dj.com.djapp.myCamera.MyCamera;
+
 public class MainActivity extends AppCompatActivity {
-    String msg = "dj";
-    boolean isVibrate = false;
-    Vibrator vb;
+    private String msg = "dj";
+    private boolean isVibrate = false;
+    private boolean isStart = false;
+    private Vibrator vb;
+    private Activity activity;
+    private Button btn_food;
+    private Button btn_startservice;
+    private Button btn_orderFood;
+    private Button btn_camera;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        activity = this;
         //得到按钮实例
         Button hellobtn = (Button)findViewById(R.id.hellobutton);
         Button vibrate = (Button) findViewById(R.id.vibrate);
+        btn_food = (Button) findViewById(R.id.listView);
+        btn_startservice = (Button) findViewById(R.id.StartService) ;
+        btn_orderFood = (Button) findViewById(R.id.orderFood);
+        btn_camera = (Button) findViewById(R.id.StartCamera);
 
         //设置监听按钮点击事件,lambda语法
         hellobtn.setOnClickListener(v -> {
@@ -41,7 +58,40 @@ public class MainActivity extends AppCompatActivity {
          * 震动功能。
          */
         vibrate.setOnClickListener(v -> myVibrate(vibrate) );
+        /**
+         * 跳转页面
+         */
+        btn_food.setOnClickListener(v -> jumpto(ListViewDemo.class));
+        btn_orderFood.setOnClickListener(v -> jumpto(TestDetails.class));
+        btn_camera.setOnClickListener(v -> jumpto(MyCamera.class));
+        btn_startservice.setOnClickListener(v -> {
+            if(isStart){
+                stopService(btn_startservice);
+                btn_startservice.setText("开始服务");
+                isStart = false;
+            }else {
+                startService(btn_startservice);
+                btn_startservice.setText("停止服务");
+                isStart = true;
+            }
+        });
 
+    }
+
+    /**
+     * 使用inent进行页面的跳转，传递活动的类参数
+     * @param targetClass
+     */
+    private void jumpto(Class targetClass){
+        Intent intent = new Intent(activity, targetClass);
+        startActivity(intent);
+    }
+
+
+
+
+    private void makeToast(String string){
+        Toast.makeText(activity, string, Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -55,6 +105,15 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    // Method to start the service
+    public void startService(View view) {
+        startService(new Intent(getBaseContext(), MyService.class));
+    }
+
+    // Method to stop the service
+    public void stopService(View view) {
+        stopService(new Intent(getBaseContext(), MyService.class));
+    }
     /**
      * 启动或停止震动，并修改按钮文本
      * @param vibrate

@@ -17,6 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".listView.ListViewDemo"></activity>
+        <activity android:name=".TestDetails"></activity>
+        <activity android:name=".myCamera.MyCamera"></activity>
+        <service android:name=".MyService" />
     </application>
 
 </manifest>

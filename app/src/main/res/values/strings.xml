@@ -16,4 +16,64 @@
     <string name="test_edit_summary">编辑概要</string>
     <string name="test_edit_description">编辑描述</string>
     <string name="test_edit_confirm">确认</string>
+    <string name="startService">启动服务</string>
+    <string name="food">菜食</string>
+    <string name="orderFood">点餐</string>
+    <string name="foodSelect">菜食已选择：</string>
+    <string name="StartCamera">打开相机</string>
+    
+    <string-array name="food">
+        <item>茄子</item>
+        <item>土豆</item>
+        <item>白菜</item>
+        <item>豆芽</item>
+        <item>西红柿</item>
+        <item>猪肉</item>
+    </string-array>
+
+    <string-array name="foodType">
+        <item>主食</item>
+        <item>蔬菜</item>
+        <item>肉类</item>
+        <item>水果</item>
+        <item>海鲜</item>
+        <item>零食</item>
+    </string-array>
+
+    <string-array name="ZhuShi">
+        <item>馒头</item>
+        <item>米饭</item>
+        <item>煎饼</item>
+    </string-array>
+
+    <string-array name="ShuCai">
+        <item>豆角</item>
+        <item>白菜</item>
+        <item>菠菜</item>
+    </string-array>
+
+    <string-array name="RouLei">
+        <item>猪肉</item>
+        <item>鸡肉</item>
+        <item>鱼肉</item>
+    </string-array>
+
+    <string-array name="ShuiGuo">
+        <item>苹果</item>
+        <item>香蕉</item>
+        <item>橘子</item>
+    </string-array>
+
+    <string-array name="LingShi">
+        <item>瓜子</item>
+        <item>猫耳朵</item>
+        <item>辣条</item>
+    </string-array>
+
+    <string-array name="HaiXian">
+        <item>虾</item>
+        <item>鲅鱼</item>
+        <item>鱿鱼</item>
+    </string-array>
+
 </resources>

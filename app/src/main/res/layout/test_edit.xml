@@ -3,10 +3,18 @@
     android:orientation="vertical" android:layout_width="fill_parent"
     android:layout_height="fill_parent" android:background="@color/lisicolor">
 
-    <Spinner android:id="@+id/category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:entries="@array/priorities"></Spinner>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Spinner android:id="@+id/category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/foodType"></Spinner>
+        <Spinner android:id="@+id/subFood"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"></Spinner>
+    </LinearLayout>
+
 
     <LinearLayout android:id="@+id/LinearLayout01"
         android:layout_height="wrap_content"
