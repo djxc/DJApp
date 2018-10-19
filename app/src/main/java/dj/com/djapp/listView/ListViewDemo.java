@@ -16,7 +16,7 @@ import dj.com.djapp.R;
  * Created by Administrator on 2018/10/19.
  */
 
-public class ListViewDemo extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class ListViewDemo extends AppCompatActivity {
     private ListView listView;
     private Activity activity;
     private TextView foodSelect;
@@ -28,14 +28,13 @@ public class ListViewDemo extends AppCompatActivity implements AdapterView.OnIte
         activity = this;
         listView = (ListView) findViewById(R.id.listFood);
         foodSelect = (TextView) findViewById(R.id.select_food);
-        listView.setOnItemClickListener(this);
-    }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String name = listView.getItemAtPosition(position).toString();
-        foodSelect.setText(foodSelect.getText() + name + " ");
-        makeToast(name);
+        //使用lambda以及匿名内部类，实现listView的item被点击的事件
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            String name = listView.getItemAtPosition(position).toString();
+            foodSelect.setText(foodSelect.getText() + name + " ");
+            makeToast(name);
+        });
     }
 
     private void makeToast(String string){

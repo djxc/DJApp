@@ -87,9 +87,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
-
     private void makeToast(String string){
         Toast.makeText(activity, string, Toast.LENGTH_LONG).show();
     }

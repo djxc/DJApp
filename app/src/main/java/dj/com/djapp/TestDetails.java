@@ -15,7 +15,7 @@ import android.widget.Spinner;
  * Created by 杜杰 on 2018/1/2.
  */
 
-public class TestDetails extends Activity implements AdapterView.OnItemSelectedListener{
+public class TestDetails extends Activity {
     private EditText mTitleText;
     private EditText mBodyText;
     private Long mRowId;
@@ -67,11 +67,22 @@ public class TestDetails extends Activity implements AdapterView.OnItemSelectedL
             }
         });
 
-        mCategory.setOnItemSelectedListener(this);
+        mCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                changeFood(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+    private void changeFood(int position){
         String [] foodStr = null;
         switch (position){
             case 0:
@@ -102,11 +113,6 @@ public class TestDetails extends Activity implements AdapterView.OnItemSelectedL
         ArrayAdapter<String> foodAd = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, foodStr);
         foodAd.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         subFood.setAdapter(foodAd);
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
     private void populateFields() {
